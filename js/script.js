@@ -28,15 +28,21 @@ const strangeArray = [
 function showList(array) {
   const container = document.getElementById("list");
   container.innerHTML = "";
-  // Más info de forEach => https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
-  array.forEach((element) => {
+  
+  // Filtrar y ordenar el array
+  const filteredAndSorted = array
+    .filter(element => typeof element === 'string') // Filtra solo los strings
+    .sort(); // Ordena alfabéticamente
+  
+  // Mostrar los elementos filtrados y ordenados
+  filteredAndSorted.forEach((element) => {
     const li = document.createElement("li");
     li.appendChild(document.createTextNode(element));
     container.appendChild(li);
   });
 }
 
-document.addEventListener("DOMContentLoaded", (e) => {
-  // Escribe tu solución aquí
-  // Sugerencia de cómo mostrar el array => showList(strangeArray);
+// Ejecutar showList cuando el DOM esté completamente cargado
+document.addEventListener("DOMContentLoaded", () => {
+  showList(strangeArray);
 });
